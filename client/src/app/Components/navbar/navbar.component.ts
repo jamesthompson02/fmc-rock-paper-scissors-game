@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
+import { IconImgComponent } from '../icon-img/icon-img.component';
+import { ScoreComponent } from '../score/score.component';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [],
+  imports: [IconImgComponent, ScoreComponent],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.scss'
+  styleUrl: './navbar.component.scss',
 })
-export class NavbarComponent {
-
-}
+export class NavbarComponent {}

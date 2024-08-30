@@ -1,1 +1,65 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  box-sizing: border-box;
+  font-family: "Barlow Semi Condensed";
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+}
+
+.game-page-container {
+  background-color: hsl(214, 47%, 23%);
+  margin: 0;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.navbar-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 2px solid hsl(217, 16%, 45%);
+}
+
+.score-container {
+  height: 100px;
+  width: 100px;
+  border-radius: 10px;
+  background: white;
+}
+
+.score-header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color: hsl(189, 59%, 53%);
+  padding: 0.5rem 0;
+  font-size: 20px;
+}
+
+.score-counter-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-size: 48px;
+}
+
+.score-counter {
+  line-height: 32px;
+}

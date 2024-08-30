@@ -1,4 +1,4 @@
-import { createReducer, on, resultMemoize } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import { GamePageActions } from '../actions/game.actions';
 
 export interface GameState {
