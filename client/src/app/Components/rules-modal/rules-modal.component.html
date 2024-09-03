@@ -1,1 +1,29 @@
-<p>rules-modal works!</p>
+@if( showModal$ | async) {
+<div class="rules-modal-container">
+  <div class="rules-modal">
+    <div class="rules-modal-header-container">
+      <app-header
+        [text]="'RULES'"
+        [size]="2"
+        [cssStyling]="'header inline'"
+      ></app-header>
+      <app-button [buttonCssStyling]="'no-button'" (onClick)="closeModal()">
+        <app-icon-img
+          [src]="'assets/iconClose.svg'"
+          [alt]="'A close icon which resembles the letter X.'"
+          [cssStyling]="'close-icon'"
+        >
+        </app-icon-img>
+      </app-button>
+    </div>
+    <div class="image-rules-container">
+      <app-icon-img
+        [src]="'assets/imageRules.svg'"
+        [alt]="
+          'Triangular diagram depicting how result of game is determined by user choice. Rock beats scissors, scissors beats paper and paper beats rock.'
+        "
+      ></app-icon-img>
+    </div>
+  </div>
+</div>
+}

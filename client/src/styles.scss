@@ -12,7 +12,7 @@ body {
 }
 
 .game-page-container {
-  background-color: hsl(214, 47%, 23%);
+  background-image: linear-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
   margin: 0;
   min-height: 100vh;
   padding: 2rem;
@@ -62,4 +62,126 @@ body {
 
 .score-counter {
   line-height: 32px;
+}
+
+.pick-an-option-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.pick-an-option {
+  height: 450px;
+  padding: 5rem;
+  position: relative;
+}
+
+.game-button {
+  position: absolute;
+  padding: 1rem;
+  z-index: 1;
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  border: none;
+  cursor: pointer;
+
+  &-rock {
+    @extend .game-button;
+    outline: 1rem solid hsl(349, 71%, 52%);
+    bottom: 20%;
+    left: 39%;
+  }
+
+  &-paper {
+    @extend .game-button;
+    outline: 1rem solid hsl(230, 89%, 62%);
+    top: 10%;
+    left: 10%;
+  }
+
+  &-scissors {
+    @extend .game-button;
+    outline: 1rem solid hsl(39, 89%, 49%);
+    top: 10%;
+    right: 10%;
+  }
+}
+
+.reset-and-modal-buttons-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reset-and-modal-buttons {
+  height: 2rem;
+  font-size: 14px;
+  border-radius: 5px;
+  padding: 0 2rem;
+  cursor: pointer;
+  background-color: hsl(237, 49%, 15%);
+  color: white;
+  border: none;
+  outline: 1px solid rgb(206, 201, 201);
+}
+
+.rules-modal-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+}
+
+.rules-modal {
+  height: 400px;
+  width: 400px;
+  background-color: white;
+  border-radius: 10px;
+  opacity: 1;
+  z-index: 10;
+  color: black;
+  padding: 2rem;
+
+  &-header-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.close-icon {
+  cursor: pointer;
+}
+
+.no-button {
+  border: none;
+  outline: none;
+  background-color: white;
+}
+
+.header {
+  margin: 0;
+  font-weight: 700;
+}
+
+.inline {
+  display: inline;
+}
+
+.image-rules-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
 }

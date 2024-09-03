@@ -1,1 +1,25 @@
-<p>pick-an-option works!</p>
+<div class="pick-an-option-container">
+  <div class="pick-an-option">
+    <app-icon-img
+      [src]="'assets/bgTriangle.svg'"
+      [alt]="'Triangular container for rock, paper and scissors options.'"
+    ></app-icon-img>
+    <app-game-button
+      [iconImg]="'assets/iconRock.svg'"
+      [iconImgAlt]="'Picture of rock icon.'"
+      [cssStyle]="rockIconCssStyle"
+    ></app-game-button>
+
+    <app-game-button
+      [iconImg]="'assets/iconPaper.svg'"
+      [iconImgAlt]="'Picture of paper icon.'"
+      [cssStyle]="paperIconCssStyle"
+    ></app-game-button>
+
+    <app-game-button
+      [iconImg]="'assets/iconScissors.svg'"
+      [iconImgAlt]="'Picture of scissors icon.'"
+      [cssStyle]="scissorsIconCssStyle"
+    ></app-game-button>
+  </div>
+</div>

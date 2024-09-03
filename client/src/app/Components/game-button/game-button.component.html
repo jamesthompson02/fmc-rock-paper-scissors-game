@@ -1,1 +1,3 @@
-<p>game-button works!</p>
+<button [ngClass]="cssStyle" (click)="gameButtonClicked($event)">
+  <span><app-icon-img [src]="iconImg" [alt]="iconImgAlt"></app-icon-img></span>
+</button>

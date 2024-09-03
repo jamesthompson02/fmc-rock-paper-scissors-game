@@ -1,3 +1,17 @@
 <div class="game-page-container">
   <app-navbar></app-navbar>
+  <app-pick-an-option></app-pick-an-option>
+  <div class="reset-and-modal-buttons-container">
+    <app-button
+      [text]="'RESET SCORE'"
+      [buttonCssStyling]="'reset-and-modal-buttons'"
+      (onClick)="resetScore()"
+    ></app-button>
+    <app-button
+      [text]="'RULES'"
+      [buttonCssStyling]="'reset-and-modal-buttons'"
+      (onClick)="showModal()"
+    ></app-button>
+  </div>
+  <app-rules-modal></app-rules-modal>
 </div>
