@@ -185,3 +185,88 @@ body {
   align-items: center;
   margin-top: 2rem;
 }
+
+.result-container {
+  height: 450px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 1rem;
+}
+
+.result-choice {
+  height: 350px;
+  width: 35%;
+}
+
+.result-outcome {
+  width: 30%;
+}
+
+.result-header {
+  color: white;
+  padding: 0 1rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.game-choice-container {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 350px;
+}
+
+.game-choice {
+  padding: 1rem;
+  border-radius: 50%;
+  height: 180px;
+  width: 180px;
+  border: none;
+
+  &-rock {
+    @extend .game-choice;
+    outline: 2rem solid hsl(349, 71%, 52%);
+  }
+
+  &-paper {
+    @extend .game-choice;
+    outline: 2rem solid hsl(230, 89%, 62%);
+  }
+
+  &-scissors {
+    @extend .game-choice;
+    outline: 2rem solid hsl(39, 89%, 49%);
+  }
+
+  &-none {
+    @extend .game-choice;
+    background-color: black;
+    outline: 2rem solid black;
+  }
+}
+
+.outcome-header {
+  color: white;
+  text-align: center;
+}
+
+.play-again-button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.play-again-button {
+  background-color: white;
+  color: hsl(237, 49%, 15%);
+  border: 1px solid white;
+  border-radius: 5px;
+  width: 200px;
+  height: 2.5rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+}

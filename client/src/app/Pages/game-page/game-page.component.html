@@ -1,6 +1,11 @@
 <div class="game-page-container">
   <app-navbar></app-navbar>
+  @if( (uiComponent$ | async ) === 'pickAnOption') {
+
   <app-pick-an-option></app-pick-an-option>
+  } @else {
+  <app-result></app-result>
+  }
   <div class="reset-and-modal-buttons-container">
     <app-button
       [text]="'RESET SCORE'"

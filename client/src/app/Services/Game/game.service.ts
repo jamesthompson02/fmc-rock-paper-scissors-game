@@ -1,22 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GameService {
-  private _playerChoice$: Subject<'rock' | 'paper' | 'scissors'> = new Subject<
-    'rock' | 'paper' | 'scissors'
-  >();
+  private _playerChoice$: BehaviorSubject<'' | 'rock' | 'paper' | 'scissors'> =
+    new BehaviorSubject<'' | 'rock' | 'paper' | 'scissors'>('');
 
-  private _computerChoice$: Subject<'' | 'rock' | 'paper' | 'scissors'> =
-    new Subject<'' | 'rock' | 'paper' | 'scissors'>();
+  private _computerChoice$: BehaviorSubject<
+    '' | 'rock' | 'paper' | 'scissors'
+  > = new BehaviorSubject<'' | 'rock' | 'paper' | 'scissors'>('');
 
-  private _result$: Subject<'' | 'win' | 'draw' | 'loss'> = new Subject<
-    '' | 'win' | 'draw' | 'loss'
-  >();
+  private _result$: BehaviorSubject<'' | 'win' | 'draw' | 'loss'> =
+    new BehaviorSubject<'' | 'win' | 'draw' | 'loss'>('');
 
-  playerChoice$: Observable<'rock' | 'paper' | 'scissors'> =
+  playerChoice$: Observable<'' | 'rock' | 'paper' | 'scissors'> =
     this._playerChoice$.asObservable();
 
   computerChoice$: Observable<'' | 'rock' | 'paper' | 'scissors'> =
@@ -25,7 +24,7 @@ export class GameService {
   result$: Observable<'' | 'win' | 'draw' | 'loss'> =
     this._result$.asObservable();
 
-  dispatchPlayerChoice(choice: 'rock' | 'paper' | 'scissors') {
+  dispatchPlayerChoice(choice: '' | 'rock' | 'paper' | 'scissors') {
     this._playerChoice$.next(choice);
   }
 

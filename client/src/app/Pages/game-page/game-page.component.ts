@@ -6,6 +6,9 @@ import { RulesModalComponent } from '../../Components/rules-modal/rules-modal.co
 import { UIService } from '../../Services/UI/ui.service';
 import { Store } from '@ngrx/store';
 import { GamePageActions } from '../../State/game/actions/game.actions';
+import { Observable } from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { ResultComponent } from '../../Components/result/result.component';
 
 @Component({
   selector: 'app-game-page',
@@ -15,12 +18,18 @@ import { GamePageActions } from '../../State/game/actions/game.actions';
     PickAnOptionComponent,
     ButtonComponent,
     RulesModalComponent,
+    CommonModule,
+    ResultComponent,
   ],
   templateUrl: './game-page.component.html',
   styleUrl: './game-page.component.scss',
 })
 export class GamePageComponent {
-  constructor(private uiService: UIService, private store: Store) {}
+  uiComponent$: Observable<'pickAnOption' | 'result'>;
+
+  constructor(private uiService: UIService, private store: Store) {
+    this.uiComponent$ = this.uiService.UIComponent$;
+  }
 
   showModal() {
     this.uiService.dispatchModalDisplayStatus(true);

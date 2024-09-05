@@ -1,0 +1,30 @@
+@switch (choice) { @case ('rock') {
+<button [ngClass]="'game-choice-rock'">
+  <span
+    ><app-icon-img
+      [src]="'assets/iconRock.svg'"
+      [alt]="'Picture of rock icon.'"
+    ></app-icon-img
+  ></span>
+</button>
+} @case ('paper') {
+<button [ngClass]="'game-choice-paper'">
+  <span
+    ><app-icon-img
+      [src]="'assets/iconPaper.svg'"
+      [alt]="'Picture of paper icon.'"
+    ></app-icon-img
+  ></span>
+</button>
+} @case ('scissors') {
+<button [ngClass]="'game-choice-scissors'">
+  <span
+    ><app-icon-img
+      [src]="'assets/iconScissors.svg'"
+      [alt]="'Picture of scissors icon.'"
+    ></app-icon-img
+  ></span>
+</button>
+} @default {
+<button [ngClass]="'game-choice-none'"></button>
+} }

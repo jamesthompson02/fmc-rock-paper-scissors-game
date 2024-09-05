@@ -1,1 +1,62 @@
-<p>result works!</p>
+<div class="result-container">
+  <div class="result-choice">
+    <app-header
+      [text]="'YOU PICKED'"
+      [cssStyling]="'header result-header'"
+    ></app-header>
+    <div class="game-choice-container">
+      <app-game-choice [choice]="playerChoice"> </app-game-choice>
+    </div>
+  </div>
+  <div class="result-outcome">
+    @switch (result) { @case ('win') {
+    <app-header
+      [text]="'YOU WIN'"
+      [cssStyling]="'header outcome-header'"
+    ></app-header>
+    <div class="play-again-button-container">
+      <app-button
+        [text]="'PLAY AGAIN'"
+        [buttonCssStyling]="'play-again-button'"
+        (onClick)="playAgain()"
+      ></app-button>
+    </div>
+    } @case ('draw') {
+    <app-header
+      [text]="'DRAW'"
+      [cssStyling]="'header outcome-header'"
+    ></app-header>
+    <div class="play-again-button-container">
+      <app-button
+        [text]="'PLAY AGAIN'"
+        [buttonCssStyling]="'play-again-button'"
+        (onClick)="playAgain()"
+      ></app-button>
+    </div>
+    } @case ('loss') {
+    <app-header
+      [text]="'YOU LOSE'"
+      [cssStyling]="'header outcome-header'"
+    ></app-header>
+    <div class="play-again-button-container">
+      <app-button
+        [text]="'PLAY AGAIN'"
+        [buttonCssStyling]="'play-again-button'"
+        (onClick)="playAgain()"
+      ></app-button>
+    </div>
+
+    } @default {
+    <div></div>
+    } }
+  </div>
+  <div class="result-choice">
+    <app-header
+      [text]="'THE HOUSE PICKED'"
+      [cssStyling]="'header result-header'"
+    ></app-header>
+    <div class="game-choice-container">
+      <app-game-choice [choice]="computerChoice"> </app-game-choice>
+    </div>
+  </div>
+</div>
