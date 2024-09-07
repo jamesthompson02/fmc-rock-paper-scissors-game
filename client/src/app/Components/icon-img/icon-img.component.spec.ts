@@ -1,23 +1,29 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import {
+  byTestId,
+  createComponentFactory,
+  Spectator,
+} from '@ngneat/spectator/jest';
 import { IconImgComponent } from './icon-img.component';
 
-describe('IconImgComponent', () => {
-  let component: IconImgComponent;
-  let fixture: ComponentFixture<IconImgComponent>;
+describe('IconImg Component', () => {
+  let spectator: Spectator<IconImgComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [IconImgComponent]
-    })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(IconImgComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  const createIconImgComponent = createComponentFactory({
+    component: IconImgComponent,
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  beforeEach(() => {
+    spectator = createIconImgComponent({
+      props: { src: 'assets/iconRock.svg', alt: 'Picture of a rock icon.' },
+    });
+  });
+
+  it('renders the image and all of its attributes correctly', () => {
+    expect(spectator).toBeTruthy();
+
+    const img = spectator.query(byTestId('iconImgComponent'));
+
+    expect(img).toHaveAttribute('src', 'assets/iconRock.svg');
+    expect(img).toHaveAttribute('alt', 'Picture of a rock icon.');
   });
 });
