@@ -1,23 +1,41 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
 
+import { MockComponents } from 'ng-mocks';
+
+import { IconImgComponent } from '../icon-img/icon-img.component';
 import { PickAnOptionComponent } from './pick-an-option.component';
+import { GameButtonComponent } from '../game-button/game-button.component';
 
-describe('PickAnOptionComponent', () => {
-  let component: PickAnOptionComponent;
-  let fixture: ComponentFixture<PickAnOptionComponent>;
+describe('PickAnOption Component', () => {
+  let spectator: Spectator<PickAnOptionComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [PickAnOptionComponent]
-    })
-    .compileComponents();
+  let iconImg: IconImgComponent | null;
 
-    fixture = TestBed.createComponent(PickAnOptionComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  let gameButtons: GameButtonComponent[] | null;
+
+  const createPickAnOptionComponent = createComponentFactory({
+    component: PickAnOptionComponent,
+    shallow: true,
+    declarations: [MockComponents(IconImgComponent, GameButtonComponent)],
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  beforeEach(() => {
+    spectator = createPickAnOptionComponent();
+    iconImg = spectator.query(IconImgComponent);
+    gameButtons = spectator.queryAll(GameButtonComponent);
+  });
+
+  it('renders the PickAnOption Component', () => {
+    expect(spectator).toBeTruthy();
+  });
+
+  it('renders the descendant components too', () => {
+    expect(iconImg).toBeTruthy();
+    expect(iconImg).toHaveAttribute('src', '/bgTriangle.svg');
+    expect(iconImg).toHaveAttribute(
+      'alt',
+      'Triangular container for rock, paper and scissors options.'
+    );
+    expect(gameButtons).toHaveLength(3);
   });
 });

@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { GameChoiceComponent } from '../game-choice/game-choice.component';
 import { Subscription } from 'rxjs';
@@ -14,13 +14,15 @@ import { GamePageActions } from '../../State/game/actions/game.actions';
   templateUrl: './result.component.html',
   styleUrl: './result.component.scss',
 })
-export class ResultComponent implements OnDestroy {
+export class ResultComponent implements OnInit, OnDestroy {
   subs!: Subscription;
   playerChoice!: '' | 'rock' | 'paper' | 'scissors';
   computerChoice!: '' | 'rock' | 'paper' | 'scissors';
   result!: '' | 'win' | 'draw' | 'loss';
 
-  constructor(private gameService: GameService, private store: Store) {
+  constructor(private gameService: GameService, private store: Store) {}
+
+  ngOnInit(): void {
     this.subs = this.gameService.playerChoice$.subscribe(
       (playerChoice) => (this.playerChoice = playerChoice)
     );

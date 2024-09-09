@@ -30,17 +30,17 @@ describe('RulesModalComponent', () => {
     declarations: [
       MockComponents(HeaderComponent, IconImgComponent, ButtonComponent),
     ],
-    providers: [mockProvider(UIService)],
+    providers: [
+      mockProvider(UIService, {
+        showRulesModal$: of(true),
+      }),
+    ],
   });
 
   beforeEach(() => {
     spectator = createRulesModalComponent();
 
     spectator.inject(UIService);
-
-    spectator.component.showModal$ = of(true);
-
-    jest.spyOn(spectator.component, 'closeModal');
 
     closeModalBtn = spectator.query(ButtonComponent);
 
@@ -55,11 +55,20 @@ describe('RulesModalComponent', () => {
   });
 
   it('should render descendant components ', () => {
-    const test = spectator.query(byTestId('test-rules'));
-
-    expect(test).toBeTruthy();
     expect(closeModalBtn).toBeTruthy();
     expect(iconImg).toBeTruthy();
     expect(header).toBeTruthy();
+  });
+
+  it('should be hidden when the user clicks on the close icon button', () => {
+    const closeModalFn = jest.spyOn(spectator.component, 'closeModal');
+    const dispatchModalDisplayStatusMock =
+      spectator.inject(UIService).dispatchModalDisplayStatus;
+
+    closeModalBtn?.onClick.emit({ type: 'click' });
+    spectator.detectChanges();
+
+    expect(closeModalFn).toHaveBeenCalled();
+    expect(dispatchModalDisplayStatusMock).toHaveBeenCalledWith(false);
   });
 });
