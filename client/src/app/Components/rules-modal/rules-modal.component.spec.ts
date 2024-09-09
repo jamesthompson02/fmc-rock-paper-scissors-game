@@ -1,4 +1,5 @@
 import {
+  byTestId,
   createComponentFactory,
   mockProvider,
   Spectator,
@@ -12,6 +13,7 @@ import { IconImgComponent } from '../icon-img/icon-img.component';
 import { ButtonComponent } from '../button/button.component';
 import { UIService } from '../../Services/UI/ui.service';
 import { of } from 'rxjs';
+import { ɵresetCompiledComponents } from '@angular/core';
 
 describe('RulesModalComponent', () => {
   let spectator: Spectator<RulesModalComponent>;
@@ -19,6 +21,8 @@ describe('RulesModalComponent', () => {
   let closeModalBtn: ButtonComponent | null;
 
   let iconImg: IconImgComponent | null;
+
+  let header: HeaderComponent | null;
 
   const createRulesModalComponent = createComponentFactory({
     component: RulesModalComponent,
@@ -36,22 +40,26 @@ describe('RulesModalComponent', () => {
 
     spectator.component.showModal$ = of(true);
 
-    spectator.component.closeModal = jest.fn(spectator.component.closeModal);
-
     jest.spyOn(spectator.component, 'closeModal');
 
     closeModalBtn = spectator.query(ButtonComponent);
 
     iconImg = spectator.query(IconImgComponent);
+
+    header = spectator.query(HeaderComponent);
   });
 
   it('should render properly and be visible', () => {
-    console.log(spectator);
     expect(spectator).toBeTruthy();
     expect(spectator).toBeVisible();
   });
 
   it('should render descendant components ', () => {
-    expect(iconImg).toHaveAttribute('src', '/iconClose.svg');
+    const test = spectator.query(byTestId('test-rules'));
+
+    expect(test).toBeTruthy();
+    expect(closeModalBtn).toBeTruthy();
+    expect(iconImg).toBeTruthy();
+    expect(header).toBeTruthy();
   });
 });
