@@ -5,6 +5,7 @@ import { UIService } from '../../Services/UI/ui.service';
 import { GameService } from '../../Services/Game/game.service';
 import { Store } from '@ngrx/store';
 import { GamePageActions } from '../../State/game/actions/game.actions';
+import { AppState } from '../../State/game/selectors/game.selectors';
 
 @Component({
   selector: 'app-game-button',
@@ -19,9 +20,7 @@ export class GameButtonComponent {
   @Input() cssStyle: string = '';
   @Input() playerChoice!: 'rock' | 'paper' | 'scissors';
 
-  onGameButtonClicked = output<any>();
-
-  constructor(private store: Store) {}
+  constructor(private store: Store<AppState>) {}
 
   gameButtonClicked() {
     this.store.dispatch(
@@ -29,7 +28,7 @@ export class GameButtonComponent {
     );
   }
 
-  objectIsEmpty(obj: { [key: string]: any }) {
-    return Object.keys(obj).length === 0;
-  }
+  // objectIsEmpty(obj: { [key: string]: any }) {
+  //   return Object.keys(obj).length === 0;
+  // }
 }

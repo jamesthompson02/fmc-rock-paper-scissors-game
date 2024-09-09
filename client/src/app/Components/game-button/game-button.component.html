@@ -1,3 +1,7 @@
-<button [ngClass]="cssStyle" (click)="gameButtonClicked()">
+<button
+  data-testid="app-game-button"
+  [ngClass]="cssStyle"
+  (click)="gameButtonClicked()"
+>
   <span><app-icon-img [src]="iconImg" [alt]="iconImgAlt"></app-icon-img></span>
 </button>

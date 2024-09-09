@@ -15,6 +15,11 @@ import { ButtonComponent } from '../button/button.component';
 })
 export class RulesModalComponent {
   showModal$: Observable<boolean>;
+  closeButtonText: string = '';
+  closeButtonStyling: string = 'no-button';
+  iconImgSrc: string = '/iconClose.svg';
+  iconImgAlt: string = 'A close icon which resembles the letter X.';
+  iconImgStyling: string = 'close-icon';
 
   constructor(private uiService: UIService) {
     this.showModal$ = this.uiService.showRulesModal$;

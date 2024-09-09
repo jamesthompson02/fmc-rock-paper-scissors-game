@@ -1,23 +1,57 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  createComponentFactory,
+  mockProvider,
+  Spectator,
+} from '@ngneat/spectator/jest';
 
 import { RulesModalComponent } from './rules-modal.component';
 
+import { MockComponents } from 'ng-mocks';
+import { HeaderComponent } from '../header/header.component';
+import { IconImgComponent } from '../icon-img/icon-img.component';
+import { ButtonComponent } from '../button/button.component';
+import { UIService } from '../../Services/UI/ui.service';
+import { of } from 'rxjs';
+
 describe('RulesModalComponent', () => {
-  let component: RulesModalComponent;
-  let fixture: ComponentFixture<RulesModalComponent>;
+  let spectator: Spectator<RulesModalComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [RulesModalComponent]
-    })
-    .compileComponents();
+  let closeModalBtn: ButtonComponent | null;
 
-    fixture = TestBed.createComponent(RulesModalComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  let iconImg: IconImgComponent | null;
+
+  const createRulesModalComponent = createComponentFactory({
+    component: RulesModalComponent,
+    shallow: true,
+    declarations: [
+      MockComponents(HeaderComponent, IconImgComponent, ButtonComponent),
+    ],
+    providers: [mockProvider(UIService)],
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  beforeEach(() => {
+    spectator = createRulesModalComponent();
+
+    spectator.inject(UIService);
+
+    spectator.component.showModal$ = of(true);
+
+    spectator.component.closeModal = jest.fn(spectator.component.closeModal);
+
+    jest.spyOn(spectator.component, 'closeModal');
+
+    closeModalBtn = spectator.query(ButtonComponent);
+
+    iconImg = spectator.query(IconImgComponent);
+  });
+
+  it('should render properly and be visible', () => {
+    console.log(spectator);
+    expect(spectator).toBeTruthy();
+    expect(spectator).toBeVisible();
+  });
+
+  it('should render descendant components ', () => {
+    expect(iconImg).toHaveAttribute('src', '/iconClose.svg');
   });
 });

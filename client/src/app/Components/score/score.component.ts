@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LocalStorageService } from '../../Services/LocalStorage/local-storage.service';
 import { select, Store, StoreModule } from '@ngrx/store';
@@ -16,13 +16,15 @@ import { CommonModule } from '@angular/common';
   templateUrl: './score.component.html',
   styleUrl: './score.component.scss',
 })
-export class ScoreComponent {
-  playerScore$: Observable<number>;
+export class ScoreComponent implements OnInit {
+  playerScore$!: Observable<number>;
 
   constructor(
     private localStorageService: LocalStorageService,
     private store: Store<AppState>
-  ) {
+  ) {}
+
+  ngOnInit(): void {
     const localStorageScore: string | null = this.localStorageService.getItem(
       'rockPaperScissorsScore'
     );

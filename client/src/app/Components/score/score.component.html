@@ -1,6 +1,8 @@
-<div class="score-container">
+<div data-testid="app-score" class="score-container">
   <div class="score-header">SCORE</div>
   <div class="score-counter-container">
-    <span class="score-counter">{{ playerScore$ | async }}</span>
+    <span data-testid="app-score-display" class="score-counter">{{
+      playerScore$ | async
+    }}</span>
   </div>
 </div>

@@ -1,4 +1,8 @@
-<button [ngClass]="buttonCssStyling" (click)="buttonClicked($event)">
+<button
+  data-testid="app-button"
+  [ngClass]="buttonCssStyling"
+  (click)="buttonClicked($event)"
+>
   {{ text }}
   <ng-content />
 </button>

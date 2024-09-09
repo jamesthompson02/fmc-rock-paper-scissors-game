@@ -7,18 +7,23 @@
         [size]="2"
         [cssStyling]="'header inline'"
       ></app-header>
-      <app-button [buttonCssStyling]="'no-button'" (onClick)="closeModal()">
+      <app-button
+        data-testid="close-modal"
+        [text]="closeButtonText"
+        [buttonCssStyling]="closeButtonStyling"
+        (onClick)="closeModal()"
+      >
         <app-icon-img
-          [src]="'assets/iconClose.svg'"
-          [alt]="'A close icon which resembles the letter X.'"
-          [cssStyling]="'close-icon'"
+          [src]="iconImgSrc"
+          [alt]="iconImgAlt"
+          [cssStyling]="iconImgStyling"
         >
         </app-icon-img>
       </app-button>
     </div>
     <div class="image-rules-container">
       <app-icon-img
-        [src]="'assets/imageRules.svg'"
+        [src]="'/imageRules.svg'"
         [alt]="
           'Triangular diagram depicting how result of game is determined by user choice. Rock beats scissors, scissors beats paper and paper beats rock.'
         "

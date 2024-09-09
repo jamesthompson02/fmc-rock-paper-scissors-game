@@ -1,15 +1,29 @@
 @switch(size) { @case (1) {
-<h1 [ngClass]="cssStyling ? cssStyling : 'header'">{{ text }}</h1>
+<h1 data-testid="app-header" [ngClass]="cssStyling ? cssStyling : 'header'">
+  {{ text }}
+</h1>
 } @case (2) {
-<h2 [ngClass]="cssStyling ? cssStyling : 'header'">{{ text }}</h2>
+<h2 data-testid="app-header" [ngClass]="cssStyling ? cssStyling : 'header'">
+  {{ text }}
+</h2>
 } @case (3) {
-<h3 [ngClass]="cssStyling ? cssStyling : 'header'">{{ text }}</h3>
+<h3 data-testid="app-header" [ngClass]="cssStyling ? cssStyling : 'header'">
+  {{ text }}
+</h3>
 } @case (4) {
-<h4 [ngClass]="cssStyling ? cssStyling : 'header'">{{ text }}</h4>
+<h4 data-testid="app-header" [ngClass]="cssStyling ? cssStyling : 'header'">
+  {{ text }}
+</h4>
 } @case (5) {
-<h5 [ngClass]="cssStyling ? cssStyling : 'header'">{{ text }}</h5>
+<h5 data-testid="app-header" [ngClass]="cssStyling ? cssStyling : 'header'">
+  {{ text }}
+</h5>
 } @case (6) {
-<h6 [ngClass]="cssStyling ? cssStyling : 'header'">{{ text }}</h6>
+<h6 data-testid="app-header" [ngClass]="cssStyling ? cssStyling : 'header'">
+  {{ text }}
+</h6>
 } @default {
-<h2 [ngClass]="cssStyling ? cssStyling : 'header'">{{ text }}</h2>
+<h2 data-testid="app-header" [ngClass]="cssStyling ? cssStyling : 'header'">
+  {{ text }}
+</h2>
 } }
