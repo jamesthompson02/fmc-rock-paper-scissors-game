@@ -8,11 +8,13 @@
   }
   <div class="reset-and-modal-buttons-container">
     <app-button
+      data-testid="reset-score-button"
       [text]="'RESET SCORE'"
       [buttonCssStyling]="'reset-and-modal-buttons'"
       (onClick)="resetScore()"
     ></app-button>
     <app-button
+      data-testid="rules-modal-button"
       [text]="'RULES'"
       [buttonCssStyling]="'reset-and-modal-buttons'"
       (onClick)="showModal()"
